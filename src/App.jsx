@@ -1,7 +1,6 @@
 import LogInForm from "./components/LogInForm"
 
 const App = () => {
-
   return (
     <>
     <div className="container">
