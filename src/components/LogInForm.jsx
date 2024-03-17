@@ -1,31 +1,23 @@
-import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 
 const LogInForm = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [passwordError, setPasswordError] = useState('')
-    
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
 
-    const changePassword = (newPassword) => {
-        // console.log(newPassword)
-        newPassword = newPassword.trim()
-
-        if (newPassword !== '' && newPassword.length >= 3) {
-            setPasswordError('')
-            setPassword(newPassword)
-        }else{
-            setPasswordError('Please provided a value password')
-        }
-    }
-    // console.log(password);
-
+    const onSubmit = (formData) => console.log(formData);
 
     return (
-        <form>
-            <input type="email" placeholder='Enter your email' />
+        <form onSubmit={handleSubmit(onSubmit)}>
 
-            <p>{passwordError}</p>
-            <input type="password" placeholder='Enter your password' onChange={e => changePassword(e.target.value)} />
+            {errors.email && <p>{errors.email.message}</p>}
+            <input type="email" placeholder='Enter your email' {...register('email', { required: true , pattern: {value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: 'Invalid Email address'}})} />
+
+            {errors.password && <p>{errors.password.message}</p>}
+            <input type="password" placeholder='Enter your password' {...register('password', { required: true, validate: {trimCheck: value => value.trim() !== '' || 'Password can not be empty or spaces only'} })} />
 
             <button>
                 Submit

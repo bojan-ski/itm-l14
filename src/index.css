@@ -3,3 +3,37 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body{
+  /* background-color: #eee; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container{
+  background-color: #eee;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.container input{ 
+  height: 30px;
+  width: 250px;
+  display: block;
+  margin: 10px 0;
+}
+
+button{
+  width: 100%;
+  background-color: blue;
+  color: #fff;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 7px;
+}
+
+button:active{
+  transform: scale(.95);
+}

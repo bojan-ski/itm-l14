@@ -4,7 +4,9 @@ const App = () => {
 
   return (
     <>
-      <LogInForm />
+    <div className="container">
+      <LogInForm /> 
+    </div>
     </>
   )
 }
